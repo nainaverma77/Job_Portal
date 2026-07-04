@@ -22,10 +22,10 @@ const JobDescription = () => {
             return;
         }
         try {
-            const res = await axios.post(`http://localhost:5000/api/v1/application/apply/${jobId}`, {}, { withCredentials: true });
+            const res = await axios.post(`${import.meta.env.VITE_BACKEND_URL || `${import.meta.env.VITE_BACKEND_URL || "http://localhost:5000"}`}/api/v1/application/apply/${jobId}`, {}, { withCredentials: true });
             if (res.data.success) {
                 // Fetch the job again to update the application list
-                const response = await axios.get(`http://localhost:5000/api/v1/job/get/${jobId}`, { withCredentials: true });
+                const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL || `${import.meta.env.VITE_BACKEND_URL || "http://localhost:5000"}`}/api/v1/job/get/${jobId}`, { withCredentials: true });
                 if (response.data.success) {
                     setSingleJob(response.data.job);
                 }
@@ -44,7 +44,7 @@ const JobDescription = () => {
     useEffect(() => {
         const fetchSingleJob = async () => {
             try {
-                const res = await axios.get(`http://localhost:5000/api/v1/job/get/${jobId}`, { withCredentials: true });
+                const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL || `${import.meta.env.VITE_BACKEND_URL || "http://localhost:5000"}`}/api/v1/job/get/${jobId}`, { withCredentials: true });
                 if (res.data.success) {
                     setSingleJob(res.data.job);
                     

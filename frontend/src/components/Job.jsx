@@ -17,7 +17,7 @@ const Job = ({ job }) => {
             return;
         }
         try {
-            const res = await axios.post(`http://localhost:5000/api/v1/user/save/${job?._id}`, {}, {
+            const res = await axios.post(`${import.meta.env.VITE_BACKEND_URL || `${import.meta.env.VITE_BACKEND_URL || "http://localhost:5000"}`}/api/v1/user/save/${job?._id}`, {}, {
                 withCredentials: true
             });
             if (res.data.success) {

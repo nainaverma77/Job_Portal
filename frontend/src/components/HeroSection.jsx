@@ -23,7 +23,7 @@ const HeroSection = () => {
         const timer = setTimeout(async () => {
             if (query.trim().length > 1) {
                 try {
-                    const res = await axios.get(`http://localhost:5000/api/v1/job/suggestions?keyword=${query}`);
+                    const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL || `${import.meta.env.VITE_BACKEND_URL || "http://localhost:5000"}`}/api/v1/job/suggestions?keyword=${query}`);
                     if (res.data.success) {
                         setSuggestions(res.data.suggestions);
                         setShowSuggestions(true);

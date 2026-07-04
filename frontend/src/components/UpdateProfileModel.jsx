@@ -40,7 +40,7 @@ const UpdateProfileModel = ({ open, setOpen }) => {
         }
         try {
             setLoadingLocal(true);
-            const res = await axios.post("http://localhost:5000/api/v1/user/profile/update", formData, {
+            const res = await axios.post(`${import.meta.env.VITE_BACKEND_URL || "http://localhost:5000"}/api/v1/user/profile/update`, formData, {
                 headers: { 'Content-Type': 'multipart/form-data' },
                 withCredentials: true
             });

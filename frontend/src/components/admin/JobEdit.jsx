@@ -50,7 +50,7 @@ const JobEdit = () => {
         e.preventDefault();
         try {
             setLoading(true);
-            const res = await axios.put(`http://localhost:5000/api/v1/job/update/${params.id}`, input, {
+            const res = await axios.put(`${import.meta.env.VITE_BACKEND_URL || `${import.meta.env.VITE_BACKEND_URL || "http://localhost:5000"}`}/api/v1/job/update/${params.id}`, input, {
                 headers: { 'Content-Type': 'application/json' },
                 withCredentials: true
             });

@@ -40,7 +40,7 @@ const PostJob = () => {
         e.preventDefault();
         try {
             setLoading(true);
-            const res = await axios.post("http://localhost:5000/api/v1/job/post", input, {
+            const res = await axios.post(`${import.meta.env.VITE_BACKEND_URL || "http://localhost:5000"}/api/v1/job/post`, input, {
                 headers: { 'Content-Type': 'application/json' },
                 withCredentials: true
             });

@@ -9,7 +9,7 @@ const useGetAllJobs = () => {
     useEffect(() => {
         const fetchAllJobs = async () => {
             try {
-                const res = await axios.get(`http://localhost:5000/api/v1/job/get?keyword=${searchedQuery}`, { withCredentials: true });
+                const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL || `${import.meta.env.VITE_BACKEND_URL || "http://localhost:5000"}`}/api/v1/job/get?keyword=${searchedQuery}`, { withCredentials: true });
                 if (res.data.success) {
                     dispatch(setAllJobs(res.data.jobs));
                 } else {
